@@ -76,10 +76,20 @@ st.markdown("""
 section[data-testid="stSidebar"] { background: #F6F4EE; }
 section[data-testid="stSidebar"] > div { padding-top: .5rem !important; padding-bottom: .5rem !important; }
 .cdei-sec-title { color:#2FA081; font-weight:800; letter-spacing:.14em; text-transform:uppercase; font-size:.9rem; margin:.8rem 0 .2rem 0; }
-section[data-testid="stSidebar"] .stButton > button { width:100%; text-align:left; background:transparent; color:#141A2E; border:none; padding:.4rem .6rem; margin:.1rem 0; border-radius:.35rem; font-size:.95rem; }
-section[data-testid="stSidebar"] .stButton > button:hover { background:rgba(20,26,46,.06); }
-.cdei-item-active { display:block; width:100%; padding:.4rem .6rem; margin:.1rem 0; border-radius:.35rem; background:#E76845; color:#fff !important; font-size:.95rem; }
+section[data-testid="stSidebar"] .stButton > button,
+section[data-testid="stSidebar"] .cdei-item-active {
+    background:transparent;
+    text-align: left !important;
+    justify-content: flex-start !important;
+    padding-left: 0.3rem !important;
+    color:#141A2E; 
+    border:none; 
+    font-size:.95rem;              
+}
 
+   
+
+            
 /* Hide scrollbar but allow wheel scroll */
 section[data-testid="stSidebar"]::-webkit-scrollbar { display:none; } section[data-testid="stSidebar"] { scrollbar-width:none; }
 
@@ -107,6 +117,35 @@ section[data-testid="stSidebar"] {
 
 /* Ensure main content doesn’t overlap if Streamlit tries to layer things */
 [data-testid="stAppViewContainer"] { margin-left: 0 !important; }
+<style>
+/* Remove the visible scrollbar from the Streamlit sidebar 
+   but still allow scrolling */
+section[data-testid="stSidebar"] {
+    background: #F6F4EE;
+    overflow-y: scroll !important;     /* keep scroll functionality */
+    scrollbar-width: none !important;  /* Firefox */
+}
+
+/* Hide scrollbar track and thumb for WebKit browsers (Chrome, Safari, Edge) */
+section[data-testid="stSidebar"]::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+}
+
+/* Optional: if Streamlit wraps content in an inner div, hide that too */
+section[data-testid="stSidebar"] > div:first-child {
+    overflow: hidden !important;
+}
+
+/* (Optional) Tighten spacing between sections */
+.cdei-sec-title {
+    margin: 0.25rem 0 0.1rem 0 !important;
+    padding-left: 0.3rem !important;
+}
+section[data-testid="stSidebar"] .stButton > button {
+    margin: 0.05rem 0 !important;
+    padding: 0.25rem 0.4rem !important;
+}
 </style>
 """, unsafe_allow_html=True)
 

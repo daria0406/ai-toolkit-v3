@@ -7,8 +7,7 @@ from sklearn.metrics import confusion_matrix, accuracy_score
 
 class BiasDetector:
     """
-    A class for detecting bias in machine learning models.
-    Implements various fairness metrics and bias detection algorithms.
+    Implements various fairness metrics and bias detection algorithms in machine learning models.
     """
     
     def __init__(self):
